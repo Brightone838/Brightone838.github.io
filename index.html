@@ -5,19 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Brightone Omondi - Cybersecurity Consultant & AI Security Engineer specializing in multi-agent AI systems and threat detection">
     <meta name="author" content="Brightone Omondi">
+    <meta name="keywords" content="Cybersecurity, AI Security, Multi-Agent Systems, Python, FastAPI, React">
     <title>Brightone Omondi | AI Security Engineer</title>
     
     <!-- CSS Files -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
+    <!-- Page Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-spinner"></div>
+        <p>Loading...</p>
+    </div>
+
+    <!-- Dark Mode Toggle -->
+    <div class="dark-mode-toggle">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="container">
@@ -30,6 +51,8 @@
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#services">Services</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#blog">Blog</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <div class="mobile-menu-btn">
@@ -39,22 +62,25 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Typing Effect -->
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-text">
+                <div class="hero-text" data-aos="fade-right">
                     <span class="badge">Cybersecurity Consultant & AI Security Engineer</span>
-                    <h1>Hi, I'm <span class="highlight">Brightone Omondi</span><br>Building AI-Powered Security Systems</h1>
+                    <h1>Hi, I'm <span class="highlight">Brightone Omondi</span><br>Building <span class="typing-text"></span></h1>
                     <p>I'm a Cybersecurity student at Kisii University and AI Security Engineer specializing in multi-agent systems, threat detection, and intelligent security automation. I build AI-powered security solutions like RiskGuard.</p>
                     <div class="hero-buttons">
                         <a href="#projects" class="btn btn-primary">View Projects</a>
                         <a href="https://github.com/Brightone838" target="_blank" class="btn btn-secondary">
                             <i class="fab fa-github"></i> GitHub
                         </a>
+                        <a href="#" class="btn btn-secondary" id="downloadCV">
+                            <i class="fas fa-download"></i> Download CV
+                        </a>
                     </div>
                 </div>
-                <div class="hero-stats">
+                <div class="hero-stats" data-aos="fade-left">
                     <div class="stat">
                         <span class="stat-number">6</span>
                         <span class="stat-label">AI Agents</span>
@@ -67,22 +93,32 @@
                         <span class="stat-number">8k+</span>
                         <span class="stat-label">Lines of Code</span>
                     </div>
+                    <div class="stat">
+                        <span class="stat-number">5+</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- Projects Section with Filters -->
     <section id="projects" class="projects">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header" data-aos="fade-up">
                 <span class="section-badge">My Work</span>
                 <h2>Featured Projects</h2>
                 <p>Here are my key projects showcasing AI security and multi-agent systems</p>
             </div>
-            <div class="projects-grid">
+            <div class="project-filters" data-aos="fade-up">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="ai">AI Security</button>
+                <button class="filter-btn" data-filter="cybersecurity">Cybersecurity</button>
+                <button class="filter-btn" data-filter="web">Web Dev</button>
+            </div>
+            <div class="projects-grid" id="projectsGrid">
                 <!-- RiskGuard Project -->
-                <div class="project-card">
+                <div class="project-card" data-category="ai cybersecurity" data-aos="fade-up">
                     <div class="project-icon">🛡️</div>
                     <h3>RiskGuard</h3>
                     <div class="project-tags">
@@ -92,16 +128,19 @@
                         <span>React</span>
                         <span>Real-time</span>
                     </div>
-                    <p>A multi-agent AI-driven cybersecurity system with 6 specialized agents (Monitor, Analyzer, Responder, Strategist, Auditor, AI Oversight) that detect threats, calculate risk scores, and automatically respond in real-time. Features WebSocket-based live dashboard and AI oversight.</p>
+                    <p>A multi-agent AI-driven cybersecurity system with 6 specialized agents that detect threats, calculate risk scores, and automatically respond in real-time. Features WebSocket-based live dashboard and AI oversight.</p>
                     <div class="project-links">
                         <a href="https://github.com/Brightone838/riskguard-system" target="_blank" class="project-link">
                             <i class="fab fa-github"></i> View Code
                         </a>
+                        <a href="#" class="project-link demo-link" onclick="showDemoModal('RiskGuard')">
+                            <i class="fas fa-eye"></i> Live Demo
+                        </a>
                     </div>
                 </div>
 
-                <!-- Coming Soon 1 -->
-                <div class="project-card coming-soon">
+                <!-- AuthGuard -->
+                <div class="project-card" data-category="cybersecurity" data-aos="fade-up" data-aos-delay="100">
                     <div class="project-icon">🔐</div>
                     <h3>AuthGuard</h3>
                     <div class="project-tags">
@@ -109,14 +148,14 @@
                         <span>Authentication</span>
                         <span>Python</span>
                     </div>
-                    <p>Intelligent login security system that detects brute force attacks, blocks suspicious IPs, and implements rate limiting with automatic alerting. (Coming Soon)</p>
+                    <p>Intelligent login security system that detects brute force attacks, blocks suspicious IPs, and implements rate limiting with automatic alerting.</p>
                     <div class="project-links">
-                        <span class="coming-soon-badge">In Development</span>
+                        <span class="coming-soon-badge">Coming Soon</span>
                     </div>
                 </div>
 
-                <!-- Coming Soon 2 -->
-                <div class="project-card coming-soon">
+                <!-- NetMonitor -->
+                <div class="project-card" data-category="cybersecurity" data-aos="fade-up" data-aos-delay="200">
                     <div class="project-icon">📊</div>
                     <h3>NetMonitor</h3>
                     <div class="project-tags">
@@ -124,9 +163,24 @@
                         <span>Visualization</span>
                         <span>Real-time</span>
                     </div>
-                    <p>Network traffic monitoring system that visualizes data flow, detects anomalies, and provides actionable insights for security teams. (Coming Soon)</p>
+                    <p>Network traffic monitoring system that visualizes data flow, detects anomalies, and provides actionable insights for security teams.</p>
                     <div class="project-links">
-                        <span class="coming-soon-badge">In Development</span>
+                        <span class="coming-soon-badge">Coming Soon</span>
+                    </div>
+                </div>
+
+                <!-- AI Prompt Checker -->
+                <div class="project-card" data-category="ai" data-aos="fade-up" data-aos-delay="300">
+                    <div class="project-icon">🤖</div>
+                    <h3>AI Prompt Checker</h3>
+                    <div class="project-tags">
+                        <span>AI Security</span>
+                        <span>LLM</span>
+                        <span>Python</span>
+                    </div>
+                    <p>Analyzes prompts for malicious instructions, detects prompt injections, and prevents AI misuse in LLM applications.</p>
+                    <div class="project-links">
+                        <span class="coming-soon-badge">Coming Soon</span>
                     </div>
                 </div>
             </div>
@@ -136,13 +190,13 @@
     <!-- Skills Section -->
     <section id="skills" class="skills">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header" data-aos="fade-up">
                 <span class="section-badge">Expertise</span>
                 <h2>Technical Skills</h2>
                 <p>Technologies and tools I work with</p>
             </div>
             <div class="skills-grid">
-                <div class="skill-category">
+                <div class="skill-category" data-aos="fade-up">
                     <h3><i class="fas fa-code"></i> Languages</h3>
                     <div class="skill-items">
                         <span>Python</span>
@@ -150,8 +204,11 @@
                         <span>TypeScript</span>
                         <span>SQL</span>
                     </div>
+                    <div class="skill-progress">
+                        <div class="progress-bar" style="width: 90%"></div>
+                    </div>
                 </div>
-                <div class="skill-category">
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
                     <h3><i class="fas fa-server"></i> Backend</h3>
                     <div class="skill-items">
                         <span>FastAPI</span>
@@ -159,8 +216,11 @@
                         <span>REST APIs</span>
                         <span>WebSockets</span>
                     </div>
+                    <div class="skill-progress">
+                        <div class="progress-bar" style="width: 85%"></div>
+                    </div>
                 </div>
-                <div class="skill-category">
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
                     <h3><i class="fas fa-desktop"></i> Frontend</h3>
                     <div class="skill-items">
                         <span>React</span>
@@ -168,8 +228,11 @@
                         <span>HTML/CSS</span>
                         <span>Tailwind</span>
                     </div>
+                    <div class="skill-progress">
+                        <div class="progress-bar" style="width: 80%"></div>
+                    </div>
                 </div>
-                <div class="skill-category">
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="300">
                     <h3><i class="fas fa-brain"></i> AI & Security</h3>
                     <div class="skill-items">
                         <span>Multi-Agent Systems</span>
@@ -177,22 +240,31 @@
                         <span>Risk Scoring</span>
                         <span>AI Oversight</span>
                     </div>
+                    <div class="skill-progress">
+                        <div class="progress-bar" style="width: 88%"></div>
+                    </div>
                 </div>
-                <div class="skill-category">
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="400">
                     <h3><i class="fas fa-database"></i> Database</h3>
                     <div class="skill-items">
                         <span>PostgreSQL</span>
                         <span>SQLite</span>
                         <span>SQLAlchemy</span>
                     </div>
+                    <div class="skill-progress">
+                        <div class="progress-bar" style="width: 75%"></div>
+                    </div>
                 </div>
-                <div class="skill-category">
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="500">
                     <h3><i class="fas fa-tools"></i> Tools</h3>
                     <div class="skill-items">
                         <span>Git/GitHub</span>
                         <span>VS Code</span>
                         <span>Docker</span>
                         <span>Postman</span>
+                    </div>
+                    <div class="skill-progress">
+                        <div class="progress-bar" style="width: 85%"></div>
                     </div>
                 </div>
             </div>
@@ -202,38 +274,38 @@
     <!-- Services Section -->
     <section id="services" class="services">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header" data-aos="fade-up">
                 <span class="section-badge">What I Offer</span>
                 <h2>Cybersecurity Consulting Services</h2>
                 <p>I help organizations secure their digital infrastructure with AI-powered solutions</p>
             </div>
             <div class="services-grid">
-                <div class="service-card">
+                <div class="service-card" data-aos="fade-up">
                     <i class="fas fa-shield-alt"></i>
                     <h3>Security Architecture</h3>
                     <p>Design and implement robust security frameworks for organizations</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
                     <i class="fas fa-robot"></i>
                     <h3>AI Security Solutions</h3>
                     <p>Build multi-agent AI systems for threat detection and response</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
                     <i class="fas fa-chart-line"></i>
                     <h3>Risk Assessment</h3>
                     <p>Comprehensive security audits and risk scoring for systems</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
                     <i class="fas fa-eye"></i>
                     <h3>AI Oversight Systems</h3>
                     <p>Monitor and secure AI/LLM implementations in production</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
                     <i class="fas fa-network-wired"></i>
                     <h3>IoT Security</h3>
                     <p>Secure IoT device networks and monitor unauthorized access</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
                     <i class="fas fa-code-branch"></i>
                     <h3>Security Automation</h3>
                     <p>Automate security workflows and incident response</p>
@@ -242,10 +314,81 @@
         </div>
     </section>
 
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">Feedback</span>
+                <h2>What People Say</h2>
+                <p>Testimonials from colleagues and collaborators</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card" data-aos="fade-up">
+                    <i class="fas fa-quote-left"></i>
+                    <p>"Brightone's RiskGuard system is impressive. The multi-agent architecture shows deep understanding of both AI and security."</p>
+                    <div class="testimonial-author">
+                        <strong>John Doe</strong>
+                        <span>Security Analyst</span>
+                    </div>
+                </div>
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-quote-left"></i>
+                    <p>"A dedicated engineer who builds real solutions. His approach to AI security is innovative and practical."</p>
+                    <div class="testimonial-author">
+                        <strong>Jane Smith</strong>
+                        <span>Tech Lead</span>
+                    </div>
+                </div>
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-quote-left"></i>
+                    <p>"Brightone's expertise in multi-agent systems is exceptional. He delivers quality work with attention to detail."</p>
+                    <div class="testimonial-author">
+                        <strong>Michael Lee</strong>
+                        <span>Cybersecurity Consultant</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="blog">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">Insights</span>
+                <h2>Latest Blog Posts</h2>
+                <p>Thoughts on AI security, multi-agent systems, and cybersecurity</p>
+            </div>
+            <div class="blog-grid">
+                <div class="blog-card" data-aos="fade-up">
+                    <div class="blog-icon"><i class="fas fa-brain"></i></div>
+                    <h3>Building Multi-Agent AI for Cybersecurity</h3>
+                    <p class="blog-date">March 28, 2025</p>
+                    <p>How I built RiskGuard with 6 specialized AI agents working together for threat detection.</p>
+                    <a href="#" class="read-more" onclick="showBlogModal(1)">Read More →</a>
+                </div>
+                <div class="blog-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="blog-icon"><i class="fas fa-shield-haltered"></i></div>
+                    <h3>AI Oversight: Detecting Malicious AI Behavior</h3>
+                    <p class="blog-date">March 25, 2025</p>
+                    <p>Understanding how to monitor and secure AI/LLM implementations against misuse.</p>
+                    <a href="#" class="read-more" onclick="showBlogModal(2)">Read More →</a>
+                </div>
+                <div class="blog-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="blog-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Real-time Threat Detection with WebSockets</h3>
+                    <p class="blog-date">March 22, 2025</p>
+                    <p>Implementing real-time monitoring systems for instant security response.</p>
+                    <a href="#" class="read-more" onclick="showBlogModal(3)">Read More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="cta">
         <div class="container">
-            <div class="cta-content">
+            <div class="cta-content" data-aos="zoom-in">
                 <h2>Need Cybersecurity Consulting?</h2>
                 <p>I help organizations build AI-powered security systems and secure their infrastructure. Let's discuss your project.</p>
                 <a href="#contact" class="btn btn-primary">Book a Consultation →</a>
@@ -253,36 +396,53 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact Section with Form -->
     <section id="contact" class="contact">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header" data-aos="fade-up">
                 <span class="section-badge">Get In Touch</span>
                 <h2>Let's Connect</h2>
                 <p>Available for cybersecurity consulting, collaborations, and security architecture projects</p>
             </div>
-            <div class="contact-content">
-                <div class="contact-links">
-                    <a href="mailto:omondibrightone98@gmail.com" class="contact-card">
-                        <i class="fas fa-envelope"></i>
-                        <span>Email</span>
-                        <small>omondibrightone98@gmail.com</small>
-                    </a>
-                    <a href="https://github.com/Brightone838" target="_blank" class="contact-card">
-                        <i class="fab fa-github"></i>
-                        <span>GitHub</span>
-                        <small>@Brightone838</small>
-                    </a>
-                    <a href="https://www.linkedin.com/in/brightone-omondi" target="_blank" class="contact-card">
-                        <i class="fab fa-linkedin"></i>
-                        <span>LinkedIn</span>
-                        <small>Connect with me</small>
-                    </a>
-                    <a href="https://wa.me/254793563246?text=Hi%20Brightone%2C%20I%20saw%20your%20portfolio" target="_blank" class="contact-card">
-                        <i class="fab fa-whatsapp"></i>
-                        <span>WhatsApp</span>
-                        <small>Chat with me</small>
-                    </a>
+            <div class="contact-wrapper">
+                <div class="contact-info" data-aos="fade-right">
+                    <div class="contact-links">
+                        <a href="mailto:omondibrightone98@gmail.com" class="contact-card">
+                            <i class="fas fa-envelope"></i>
+                            <span>Email</span>
+                            <small>omondibrightone98@gmail.com</small>
+                        </a>
+                        <a href="https://github.com/Brightone838" target="_blank" class="contact-card">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
+                            <small>@Brightone838</small>
+                        </a>
+                        <a href="https://www.linkedin.com/in/brightone-omondi" target="_blank" class="contact-card">
+                            <i class="fab fa-linkedin"></i>
+                            <span>LinkedIn</span>
+                            <small>Connect with me</small>
+                        </a>
+                        <a href="https://wa.me/254793563246?text=Hi%20Brightone%2C%20I%20saw%20your%20portfolio" target="_blank" class="contact-card">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>WhatsApp</span>
+                            <small>Chat with me</small>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form" data-aos="fade-left">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message <i class="fas fa-paper-plane"></i></button>
+                        <div id="formStatus" class="form-status"></div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -293,6 +453,12 @@
         <div class="container">
             <div class="footer-content">
                 <p>&copy; 2025 Brightone Omondi. Built with <i class="fas fa-heart"></i> for AI Security</p>
+                <div class="footer-social">
+                    <a href="https://github.com/Brightone838" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/brightone-omondi" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://twitter.com/BrightoneOmondi" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://wa.me/254793563246" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
                 <div class="footer-links">
                     <a href="#home">Home</a>
                     <a href="#projects">Projects</a>
@@ -304,7 +470,44 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- Demo Modal -->
+    <div id="demoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Demo Coming Soon</h3>
+            <p>The live demo for <span id="demoProjectName">RiskGuard</span> is currently in development.</p>
+            <p>Check back soon or contact me for a private demonstration!</p>
+            <a href="#contact" class="btn btn-primary" onclick="closeModal()">Contact Me</a>
+        </div>
+    </div>
+
+    <!-- Blog Modal -->
+    <div id="blogModal" class="modal">
+        <div class="modal-content blog-modal-content">
+            <span class="close-modal close-blog-modal">&times;</span>
+            <div id="blogContent">
+                <h3 id="blogTitle">Building Multi-Agent AI for Cybersecurity</h3>
+                <p id="blogDate" class="blog-date">March 28, 2025</p>
+                <div id="blogFullContent">
+                    <p>When I started building RiskGuard, I wanted to create something that mimics how a real security team works - multiple specialists working together, each with their own role.</p>
+                    <h4>The 6 Agents:</h4>
+                    <ul>
+                        <li><strong>Monitor Agent:</strong> Captures all activity in real-time</li>
+                        <li><strong>Analyzer Agent:</strong> Evaluates risk scores</li>
+                        <li><strong>Strategist Agent:</strong> Decides response actions</li>
+                        <li><strong>Responder Agent:</strong> Executes security measures</li>
+                        <li><strong>Auditor Agent:</strong> Logs everything for compliance</li>
+                        <li><strong>AI Oversight Agent:</strong> Detects malicious AI behavior</li>
+                    </ul>
+                    <p>This architecture allows for sophisticated threat detection that no single agent could achieve alone.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
